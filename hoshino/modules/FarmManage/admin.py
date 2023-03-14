@@ -279,7 +279,7 @@ async def admin_add_farm_user(session):
     msg, log_msg, carry_list = "", "", []
     uids_info_raw = session.get(
         "uids_time_raw",
-        prompt="请输入qq@uid@农场名@时间，换行切换，\n如12345@1234567890123@捣蛋屋111@2022-03-16",
+        prompt="请输入qq@uid@农场名@时间，换行切换，\n如12345@1234567890123@屋111@2022-03-16",
     )
     info_list = uids_rawtext_to_list(uids_info_raw)
     for uid_info in info_list:
