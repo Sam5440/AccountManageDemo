@@ -122,7 +122,7 @@ def farm_api(account, password, uid, state, logs=True):
     if logs:
         log(data)
     response = requests.post(
-        f"https://pcrd.tencentbot.top/{state}", headers=headers, data=data
+        f"https://example.com/{state}", headers=headers, data=data
     )
     resp = response.text
     return resp
@@ -152,7 +152,7 @@ def farm_clan_create(account, password, name):
     )
     log(data)
     response = requests.post(
-        f"https://pcrd.tencentbot.top/createclan", headers=headers, data=data
+        f"https://example.com/createclan", headers=headers, data=data
     )
     resp = response.text
     return resp
@@ -181,7 +181,7 @@ def farm_change_clan_name(account, password, name, join_condition=0):
         data = data + '", "join_condition": ' + str(join_condition) + " }"
     log(data)
     response = requests.post(
-        f"https://pcrd.tencentbot.top/changeclanname", headers=headers, data=data
+        f"https://example.com/changeclanname", headers=headers, data=data
     )
     resp = response.text
     return resp
@@ -200,7 +200,7 @@ def farm_search_clan(name):
     data = '{ "name": "' + name + '" }'
     log(data)
     response = requests.post(
-        f"https://pcrd.tencentbot.top/searchclan", headers=headers, data=data
+        f"https://example.com/searchclan", headers=headers, data=data
     )
     resp = response.text
     return resp
@@ -214,7 +214,7 @@ def farm_search_clanid(clanid):
     data = '{ "clanid": ' + str(clanid) + " }"
     log(data)
     response = requests.post(
-        "https://pcrd.tencentbot.top/getclaninfo", headers=headers, data=data
+        "https://example.com/getclaninfo", headers=headers, data=data
     )
     resp = response.text
     info = check(resp, True, 1)
@@ -303,15 +303,15 @@ def check(response, raw=False, sleep_time=0):
     time.sleep(sleep_time)
     response_json = json.loads(response)
     uuid = response_json["uuid"]
-    response = requests.get(f"https://pcrd.tencentbot.top/check/{uuid}").content.decode(
+    response = requests.get(f"https://example.com/check/{uuid}").content.decode(
         "utf8"
     )
     log(response)
     # num = 5
-    # log(json.loads(requests.get(f'https://pcrd.tencentbot.top/queue').content.decode('utf8')))
+    # log(json.loads(requests.get(f'https://example.com/queue').content.decode('utf8')))
     #
     # while num != 0:
-    #     num_json = json.loads(requests.get(f'https://pcrd.tencentbot.top/queue').content.decode('utf8'))
+    #     num_json = json.loads(requests.get(f'https://example.com/queue').content.decode('utf8'))
     #     num = int(num_json["num"])
     #     sleep(num*2)
     if raw:
@@ -567,7 +567,7 @@ def uids_rawtext_to_list(raw_text: str, interval_str="@"):
 def response_to_url(response, to_qrcode=False, to_short_url=True):
     response_json = json.loads(response)
     uuid = response_json["uuid"]
-    url = f"https://pcrd.tencentbot.top/check/{uuid}"
+    url = f"https://example.com/check/{uuid}"
     if to_short_url:
         url = short_url(url)
     if to_qrcode:

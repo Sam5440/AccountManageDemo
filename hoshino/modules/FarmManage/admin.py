@@ -383,7 +383,7 @@ async def change_farm(session):
     response = farm_api(k.account, k.password, k.uid, "kick")
     # response_json = json.loads(response)
     # uuid = response_json["uuid"]
-    # qrcode_img = qrcode_url(f'https://pcrd.tencentbot.top/check/{uuid}')
+    # qrcode_img = qrcode_url(f'https://example.com/check/{uuid}')
     p = FarmAccount(
         clanname=k.clanbattle_name,
         account=k.account,
@@ -424,7 +424,7 @@ async def delete_uid_farm(session):
     FarmUser.delete().where(FarmUser.uid == k.uid).execute()
     response_json = json.loads(response)
     uuid = response_json["uuid"]
-    await session.finish(f"成功,https://pcrd.tencentbot.top/check/{uuid}")
+    await session.finish(f"成功,https://example.com/check/{uuid}")
 
 
 @on_command("更换农场UID", only_to_me=False)
@@ -441,7 +441,7 @@ async def change_uid_farm(session):
     FarmUser.update({FarmUser.uid: new_uid}).where(FarmUser.id == k.id).execute()
     response_json = json.loads(response)
     uuid = response_json["uuid"]
-    await session.finish(f"成功,https://pcrd.tencentbot.top/check/{uuid}")
+    await session.finish(f"成功,https://example.com/check/{uuid}")
 
 
 @on_command("更换农场QQ", only_to_me=False)

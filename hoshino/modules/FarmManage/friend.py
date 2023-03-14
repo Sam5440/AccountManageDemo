@@ -137,7 +137,7 @@ def friend_api(account, password, uid, state):
     )
     log(data)
     response = requests.post(
-        f"https://pcrd.tencentbot.top/friend/{state}", headers=headers, data=data
+        f"https://example.com/friend/{state}", headers=headers, data=data
     )
     resp = response.text
     return resp
